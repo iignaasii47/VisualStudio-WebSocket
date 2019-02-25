@@ -1,0 +1,54 @@
+﻿<Window x:Class="WebServiceMVVM.Window1"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WebServiceMVVM"
+        mc:Ignorable="d"
+        Title="Window1" Height="450" Width="800">
+    <Grid>
+        <Button Content="Find By ID" HorizontalAlignment="Left" Margin="59,89,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click"/>
+        <TextBox x:Name="TB_ID" HorizontalAlignment="Left" Height="23" Margin="139,89,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
+        <DataGrid x:Name="DG_Contactes" HorizontalAlignment="Left" Height="71" Margin="0,10,0,0" VerticalAlignment="Top" Width="367"/>
+        <Button Content="Previous" HorizontalAlignment="Left" Margin="10,388,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click_1"/>
+        <Button Content="Find By Name" HorizontalAlignment="Left" Margin="47,117,0,0" VerticalAlignment="Top" Width="87" Click="Button_Click_2"/>
+        <TextBox x:Name="TB_Patro" HorizontalAlignment="Left" Height="23" Margin="139,117,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
+        <Button Content="Find By Phone" HorizontalAlignment="Left" Margin="47,144,0,0" VerticalAlignment="Top" Width="87" Click="Button_Click_3"/>
+        <TextBox x:Name="TB_Telefon" HorizontalAlignment="Left" Height="23" Margin="139,145,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
+        <Label Content="Nom" HorizontalAlignment="Left" Margin="618,16,0,0" VerticalAlignment="Top"/>
+        <Label Content="Cognom" HorizontalAlignment="Left" Margin="598,47,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="TB_Nom" HorizontalAlignment="Left" Height="23" Margin="659,19,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="TB_Cognom" HorizontalAlignment="Left" Height="23" Margin="659,50,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
+        <Button Content="Insert Contact" HorizontalAlignment="Left" Margin="675,82,0,0" VerticalAlignment="Top" Width="89" Click="Button_Click_4"/>
+        <Label Content="ID" HorizontalAlignment="Left" Margin="406,10,0,0" VerticalAlignment="Top"/>
+        <Label Content="Nom" HorizontalAlignment="Left" Margin="392,41,0,0" VerticalAlignment="Top"/>
+        <Label Content="Cognom" HorizontalAlignment="Left" Margin="372,72,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="TB_UID" HorizontalAlignment="Left" Height="23" Margin="433,13,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="TB_UNom" HorizontalAlignment="Left" Height="23" Margin="433,44,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="TB_UCognom" HorizontalAlignment="Left" Height="23" Margin="433,72,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
+        <Button Content="Update Contact" HorizontalAlignment="Left" Margin="446,106,0,0" VerticalAlignment="Top" Width="92" Click="Button_Click_5"/>
+        <Label Content="ID" HorizontalAlignment="Left" Margin="572,115,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="TB_DID" HorizontalAlignment="Left" Height="23" Margin="601,118,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
+        <Button Content="Delete Contact" HorizontalAlignment="Left" Margin="618,146,0,0" VerticalAlignment="Top" Width="91" Click="Button_Click_6"/>
+        <Label Content="Telefon" HorizontalAlignment="Left" Margin="386,189,0,0" VerticalAlignment="Top"/>
+        <Label Content="Tipus" HorizontalAlignment="Left" Margin="386,220,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="TB_ITel" HorizontalAlignment="Left" Height="23" Margin="447,192,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="TB_ITipus" HorizontalAlignment="Left" Height="23" Margin="447,223,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
+        <Button Content="Insert Telefon" HorizontalAlignment="Left" Margin="449,296,0,0" VerticalAlignment="Top" Width="89" Click="Button_Click_8"/>
+        <Label Content="ID" HorizontalAlignment="Left" Margin="194,183,0,0" VerticalAlignment="Top"/>
+        <Label Content="Telefon" HorizontalAlignment="Left" Margin="160,214,0,0" VerticalAlignment="Top"/>
+        <Label Content="Tipus" HorizontalAlignment="Left" Margin="171,242,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="TB_UID_Tel" HorizontalAlignment="Left" Height="23" Margin="221,186,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="TB_UTel" HorizontalAlignment="Left" Height="23" Margin="221,217,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="TB_UTipus" HorizontalAlignment="Left" Height="23" Margin="221,245,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
+        <Button Content="Update Telefon" HorizontalAlignment="Left" Margin="231,312,0,0" VerticalAlignment="Top" Width="92" Click="Button_Click_7"/>
+        <Label Content="ID" HorizontalAlignment="Left" Margin="597,248,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="TB_DID_Tel" HorizontalAlignment="Left" Height="23" Margin="626,251,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
+        <Button Content="Delete Telefon" HorizontalAlignment="Left" Margin="643,279,0,0" VerticalAlignment="Top" Width="91" Click="Button_Click_9"/>
+        <TextBox x:Name="TB_UcontacteID" HorizontalAlignment="Left" Height="23" Margin="221,273,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="TB_IcontacteID" HorizontalAlignment="Left" Height="23" Margin="447,252,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
+        <Label Content="contacteID" HorizontalAlignment="Left" Margin="372,250,0,0" VerticalAlignment="Top"/>
+        <Label Content="contacteID" HorizontalAlignment="Left" Margin="142,270,0,0" VerticalAlignment="Top"/>
+
+    </Grid>
+</Window>
