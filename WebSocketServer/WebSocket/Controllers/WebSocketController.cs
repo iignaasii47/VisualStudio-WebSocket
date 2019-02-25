@@ -32,19 +32,21 @@ namespace WebSocket.Controllers
             public override void OnOpen()
             {
                 // Quan es connecta un nou usuari: cal afegir el SocketHandler a la Collection, notificar a tothom la incorporació i donar-li la benvinguda
-
+                Sockets.Add(this);
+                Sockets.Broadcast(_nom + " s'ha connectat.");
             }
 
             public override void OnMessage(string missatge)
             {
                 // Quan un usuari envia un missatge, cal que tothom el rebi
-
+                Sockets.Broadcast(_nom + ": " + missatge);
             }
 
             public override void OnClose()
             {
                 // Quan un usuari desconnecta, cal acomiadar-se'n, esborrar-ne el SocketHandler de la Collection i notificar a la resta que marxa
-
+                // TODO: falta eliminar al usuario de Sockets
+                Sockets.Broadcast(_nom + " s'ha desconnectat.");
             }
         }
     }
