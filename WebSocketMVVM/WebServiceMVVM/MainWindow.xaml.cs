@@ -1,42 +1,76 @@
 ﻿using System;
+using System.Linq;
 using System.Net.Http;
 using System.Net.WebSockets;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
 using Microsoft.AspNetCore.Http;
-using Newtonsoft.Json;
+
+
 
 namespace WebServiceMVVM
 {
     public partial class MainWindow : Window
     {
+        private string user;
+        private CancellationTokenSource cts;
+        private ClientWebSocket socket;
+
         private static readonly HttpClient client = new HttpClient();
         public MainWindow()
         {
             InitializeComponent();
+            cts = new CancellationTokenSource();
+            socket = new ClientWebSocket();
         }
 
-        private void B_Connect_Click(object sender, RoutedEventArgs e)
+        private async void B_Connect_ClickAsync(object sender, RoutedEventArgs e)
         {
-            string user = this.TB_User.Text;
-
-            // TODO: conectar con el websocket pasando el user
+            user = TB_User.Text;
+            await Start();
         }
 
-        private void B_Send_Click(object sender, RoutedEventArgs e)
+        private async void B_Send_ClickAsync(object sender, RoutedEventArgs e)
         {
             string message = this.TB_Message.Text;
 
-            // TODO: enviar el message al websocket para broadcastear cosas
+            string missatge = TB_Message.Text;
+            TB_Message.Text = "";
+            if (missatge == "Adeu")
+            {
+                cts.Cancel();
+                return;
+            }
+            byte[] sendBytes = Encoding.UTF8.GetBytes(missatge);
+            var sendBuffer = new ArraySegment<byte>(sendBytes);
+            await socket.SendAsync(sendBuffer, WebSocketMessageType.Text, endOfMessage: true, cancellationToken: cts.Token);
         }
 
-        // TODO: recepcion del broadcasteamiento de mensajes
+        public async Task Start()
+        {
+            string wsUri = string.Format("ws://localhost:50503/api/websocket?nom={0}", user);
+            await socket.ConnectAsync(new Uri(wsUri), cts.Token);
+            Console.WriteLine(socket.State);
+
+            await Task.Factory.StartNew(
+                async () =>
+                {
+                    var rcvBytes = new byte[128];
+                    var rcvBuffer = new ArraySegment<byte>(rcvBytes);
+                    while (true)
+                    {
+                        WebSocketReceiveResult rcvResult = await socket.ReceiveAsync(rcvBuffer, cts.Token);
+                        byte[] msgBytes = rcvBuffer.Skip(rcvBuffer.Offset).Take(rcvResult.Count).ToArray();
+                        string rcvMsg = Encoding.UTF8.GetString(msgBytes);
+                        TB_ChatLog.Text += rcvMsg;
+                    }
+                }, cts.Token, TaskCreationOptions.LongRunning, TaskScheduler.Default);
+        }
+
         private async Task Echo(HttpContext context, WebSocket webSocket)
         {
-            // TODO: no tengo ni flowers de si esto funciona o no
             var buffer = new byte[1024 * 4];
             WebSocketReceiveResult result = await webSocket.ReceiveAsync(new ArraySegment<byte>(buffer), CancellationToken.None);
             while (!result.CloseStatus.HasValue)

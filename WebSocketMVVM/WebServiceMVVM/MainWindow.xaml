@@ -8,9 +8,9 @@
         Title="MainWindow" Height="450" Width="800">
     <Grid>
         <TextBox x:Name="TB_User" HorizontalAlignment="Left" Height="23" Margin="255,66,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
-        <Button x:Name="B_Connect" Content="Connect" HorizontalAlignment="Left" Margin="402,66,0,0" VerticalAlignment="Top" Width="75" Click="B_Connect_Click"/>
+        <Button x:Name="B_Connect" Content="Connect" HorizontalAlignment="Left" Margin="402,66,0,0" VerticalAlignment="Top" Width="75" Click="B_Connect_ClickAsync"/>
         <TextBlock x:Name="TB_ChatLog" HorizontalAlignment="Left" Margin="255,94,0,0" TextWrapping="Wrap" Text="chat log" VerticalAlignment="Top" Height="186" Width="222"/>
         <TextBox x:Name="TB_Message" HorizontalAlignment="Left" Height="23" Margin="255,285,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
-        <Button x:Name="B_Send" Content="Send" HorizontalAlignment="Left" Margin="402,286,0,0" VerticalAlignment="Top" Width="75" Click="B_Send_Click"/>
+        <Button x:Name="B_Send" Content="Send" HorizontalAlignment="Left" Margin="402,286,0,0" VerticalAlignment="Top" Width="75" Click="B_Send_ClickAsync"/>
     </Grid>
 </Window>
